@@ -1,0 +1,14 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order_route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/orders/**
+        - id: customer_route
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/customers/**
